@@ -91,7 +91,7 @@ $(function() {
         });
 
         it('there is at least a single entry in .feed container', function() {
-            expect($('.entry h2')[0]).toBeDefined();
+            expect($('.feed').children().length).not.toBe(0);
         });
     });
 
@@ -102,12 +102,13 @@ $(function() {
              * Remember, loadFeed() is asynchronous.
              */
     describe('New Feed Selection', function() {
+        var initial = $('.feed').html();
         beforeEach(function(done) {
             loadFeed(2, done);
         });
 
         it('content actually changes', function() {
-            expect($('.header .header-title').html() === ('HTML5 Rocks')).toBe(true);
+            expect($('.feed').html()).not.toBe(initial);
         });
     });
 
